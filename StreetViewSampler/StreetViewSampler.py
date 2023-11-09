@@ -1,6 +1,5 @@
 import os
 import googlemaps
-import os
 import pandas as pd
 import random
 import requests
