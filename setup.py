@@ -6,7 +6,7 @@ setup(
     description='A python package that randomly samples google streetview images from specified locations', 
     author='pinstripezebra', 
     author_email='seelcs12@gmail.com', 
-    packages=['my_package'], 
+    packages=['StreetViewSampler'], 
     install_requires=[ 
         'os', 
         'pandas',
