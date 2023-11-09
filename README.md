@@ -7,9 +7,10 @@ The objective is to allow for easy random sampling of googles streetview api to 
 ### Getting Started
 
 First install package:
-'''
+
+```
 pip install streetviewsampler
-'''
+```
 
 Once package is installed need to setup a project and acquire a google maps api key https://developers.google.com/maps/documentation/streetview/cloud-setup , at time of writing google offers 12 months and $300 free credit for api calls.
 
