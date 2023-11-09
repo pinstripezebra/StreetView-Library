@@ -12,6 +12,7 @@ class StreetViewSampler:
         self.gmaps = googlemaps.Client(key=api_key)
         self.key = api_key
         self.lat_long = []
+        self.parent_folder = os.path.dirname(__name__)
     
     def convert_long_lat_to_address(self,location):
 
@@ -51,9 +52,26 @@ class StreetViewSampler:
 
         return city,address
     
-    def pull_image(self, city, address, parent_folder, city_count):
+    def pull_image(self, city, address,  city_count = "", path = ""):
 
-        """Takes an addres string as an input and returns an image from google maps streetview api"""
+        """
+        Takes an addres string as an input and returns an image from google maps streetview api
+        
+        Parameters:
+        ----------------
+            city: str
+                name of city being quiried
+            addres: str 
+                containing string representation of address
+            city_count: str, optional
+                parameter for labeling returned image
+            path: str
+                subfolder path to append to parent folder to write output
+
+        ------------------
+        OUTPUT:
+            None
+        """
 
         pic_base = 'https://maps.googleapis.com/maps/api/streetview?'
 
@@ -65,14 +83,14 @@ class StreetViewSampler:
         #Requesting data
         pic_response = requests.get(pic_base, params=pic_params)
         image_name = city + "_ " + str(city_count) + ".jpg"
-        with open(parent_folder +"Data\\Images\\"+ image_name, "wb") as file:
+        with open(self.parent_folder + path + image_name, "wb") as file:
             file.write(pic_response.content)
         
         # Closing connection to API
         pic_response.close()
 
 
-    def query_random_location(self, location, parent_folder, min_distance = 0.005):
+    def query_location_random(self, location,  min_distance = 0.005):
 
         """
         Takes input city coordinates, adds a random element, 
@@ -111,11 +129,11 @@ class StreetViewSampler:
         #Calling functions
         try:
             city, address = self.convert_long_lat_to_address(self.gmaps,new_location)
-            self.pull_image(self.gmaps, city, address,parent_folder,str(new_location))
+            self.pull_image(self.gmaps, city, address,str(new_location))
         except:
             print("No Image for Location")
 
-    def query_multiple_locations(self, cities, return_count, parent_folder):
+    def query_multiple_locations(self, cities, return_count):
 
         """
         Queries multiple location saving images as png files
@@ -136,4 +154,4 @@ class StreetViewSampler:
         for index, row in cities.iterrows():
             location = (row['Latitude'], -row['Longitude'])
             for count in range(return_count):
-                self.query_random_location(self.gmaps, location, parent_folder)
+                self.query_location_random(self.gmaps, location)
