@@ -15,5 +15,5 @@ setup(
         'googlemaps',
         'random',
         'requests'
-    ], 
+    ]
 ) 
