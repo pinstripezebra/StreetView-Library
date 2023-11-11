@@ -9,6 +9,7 @@ setup(
     author='pinstripezebra', 
     author_email='seelcs12@gmail.com', 
     packages=['StreetViewSampler'], 
+    license="MIT",
     install_requires=[ 
         'os', 
         'pandas',
