@@ -8,6 +8,8 @@ setup(
     author_email="seelcs12@gmail.com",
     url="https://github.com/pinstripezebra/StreetView-Library",
     description="A python package that randomly samples google streetview images from specified locations",
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
