@@ -11,10 +11,10 @@ setup(
     packages=['StreetViewSampler'], 
     license="MIT",
     install_requires=[ 
-        'os', 
-        'pandas',
-        'googlemaps',
-        'random',
-        'requests'
+        "os", 
+        "pandas",
+        "googlemaps",
+        "random",
+        "requests"
     ]
 ) 
