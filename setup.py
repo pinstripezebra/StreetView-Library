@@ -1,11 +1,6 @@
 from setuptools import setup, find_packages
-  
-try:
-    import pypandoc
-    long_description = pypandoc.convert_file('README.md', 'rst')
-except(IOError, ImportError):
-    long_description = open('README.md').read()
 
+README = "test"
 setup(
     name="streetviewsampler",
     version="v0.1.1-alpha",
@@ -14,6 +9,7 @@ setup(
     url="https://github.com/pinstripezebra/StreetView-Library",
     description="A python package that randomly samples google streetview images from specified locations",
     long_description_content_type="text/markdown",
+    long_description= README,
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
